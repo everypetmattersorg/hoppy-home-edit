@@ -1,0 +1,50 @@
+/* Extras the design canvas doesn't carry: form styling, focus rings, motion. */
+[hidden] { display: none !important; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+img { max-width: 100%; }
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 3px solid #A3305F; outline-offset: 3px;
+}
+
+.hhe-row { display: flex; flex-wrap: wrap; gap: 18px; }
+.hhe-row > .hhe-field { flex: 1 1 220px; min-width: 0; }
+.hhe-field { display: flex; flex-direction: column; gap: 6px; }
+.hhe-field > label, .hhe-field > legend {
+  font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; color: #1F1719; padding: 0; margin-bottom: 6px;
+}
+.hhe-opt { letter-spacing: 0.04em; font-weight: 400; color: #6E5F55; }
+.hhe-input {
+  font: inherit; font-size: 1rem; color: #1F1719; background: #FFFFFF;
+  border: 2px solid #1F1719; border-radius: 12px; padding: 12px 14px; min-height: 48px; box-sizing: border-box; width: 100%;
+}
+.hhe-input::placeholder { color: #6E5F55; opacity: 1; }
+textarea.hhe-input { resize: vertical; min-height: 120px; line-height: 1.5; }
+.hhe-input[aria-invalid="true"] { border-color: #A3305F; box-shadow: 0 0 0 2px #F38FB2; }
+
+.hhe-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.hhe-chip { position: relative; cursor: pointer; }
+.hhe-chip input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.hhe-chip span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 999px;
+  border: 2px solid #1F1719; background: #FFFFFF; font-weight: 600;
+}
+.hhe-chip input:checked + span { background: #BBCA7D; box-shadow: 3px 3px 0 #1F1719; }
+.hhe-chip input:focus-visible + span { outline: 3px solid #A3305F; outline-offset: 3px; }
+
+.hhe-submit {
+  font: inherit; font-weight: 700; font-size: 1.05rem; color: #1F1719; background: #F38FB2; cursor: pointer;
+  min-height: 54px; padding: 0 28px; border-radius: 999px; border: 3px solid #1F1719; box-shadow: 4px 4px 0 #1F1719;
+}
+.hhe-submit:hover { background: #BBCA7D; }
+.hhe-submit:disabled { opacity: 0.6; cursor: wait; }
+
+/* Small screens: keep the hero price tags inside the page. */
+@media (max-width: 480px) {
+  #top [style*="aspect-ratio: 1 / 1.08"] > div { font-size: 0.9rem; }
+}
+
+/* The frog sits at a fixed spot on wide screens; tuck it into the corner on smaller ones. */
+@media (max-width: 1200px) {
+  img[src="/assets/frog.webp"] { left: auto !important; right: 24px; top: 16px !important; }
+}

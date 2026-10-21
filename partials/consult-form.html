@@ -1,0 +1,31 @@
+<div id="consult-card" style="width: 100%; max-width: 640px; text-align: left; background: #FBF6F0; border: 3px solid #1F1719; border-radius: 20px; box-shadow: 6px 6px 0 #1F1719; margin-top: 12px">
+<div style="display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 18px 28px; border-bottom: 3px solid #1F1719">
+<span style="font-weight: 700; letter-spacing: 0.2em; font-size: 0.78rem">CONSULT REQUEST</span>
+<span aria-hidden="true" style="display: inline-flex; align-items: center; min-height: 26px; padding: 0 12px; border-radius: 999px; background: #F38FB2; border: 2px solid #1F1719; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em">FREE</span>
+</div>
+<form id="consult-form" novalidate style="padding: 24px 28px 28px; display: flex; flex-direction: column; gap: 18px">
+<div class="hhe-row">
+<div class="hhe-field"><label for="cf-name">YOUR NAME</label><input id="cf-name" name="name" class="hhe-input" type="text" autocomplete="name" required maxlength="200"></div>
+<div class="hhe-field"><label for="cf-email">EMAIL</label><input id="cf-email" name="email" class="hhe-input" type="email" autocomplete="email" required maxlength="320"></div>
+</div>
+<div class="hhe-row">
+<div class="hhe-field"><label for="cf-phone">PHONE <span class="hhe-opt">(optional)</span></label><input id="cf-phone" name="phone" class="hhe-input" type="tel" autocomplete="tel" maxlength="40"></div>
+<div class="hhe-field"><label for="cf-city">CITY <span class="hhe-opt">(optional)</span></label><input id="cf-city" name="city" class="hhe-input" type="text" autocomplete="address-level2" maxlength="120"></div>
+</div>
+<fieldset class="hhe-field" style="border: 0; padding: 0; margin: 0">
+<legend>WHAT CAN EMMA HELP WITH?</legend>
+<div class="hhe-chips">
+<label class="hhe-chip"><input type="checkbox" name="services" value="organize"><span>Organize</span></label>
+<label class="hhe-chip"><input type="checkbox" name="services" value="sell"><span>Sell</span></label>
+<label class="hhe-chip"><input type="checkbox" name="services" value="thrift"><span>Thrift</span></label>
+<label class="hhe-chip"><input type="checkbox" name="services" value="not sure"><span>Not sure yet</span></label>
+</div>
+</fieldset>
+<div class="hhe-field"><label for="cf-message">TELL ME ABOUT THE SPACE</label><textarea id="cf-message" name="message" class="hhe-input" rows="5" required maxlength="5000" placeholder="Which room, what's driving you up the wall, and when you'd like to start."></textarea></div>
+<div aria-hidden="true" style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden"><label for="cf-website">Website</label><input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+<button type="submit" class="hhe-submit">send my request</button>
+<p id="form-status" role="status" aria-live="polite" style="margin: 0; font-size: 0.98rem; color: #6E5F55"></p>
+</div>
+</form>
+</div>
