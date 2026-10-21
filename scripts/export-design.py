@@ -39,15 +39,22 @@ for k, v in images.items():
 if "/_blob/" in body:
     sys.exit("An image in the design has no matching file in assets/ yet.")
 
-# The booking section: replace the [EMAIL ADDRESS] button with the form.
+# The booking section: the design draws the consult form as a mockup; swap in
+# the working version (field names, validation, honeypot, status message).
 form = (ROOT / "partials" / "consult-form.html").read_text().strip()
 email_btn = re.search(r'<a href="#"[^>]*>\[EMAIL ADDRESS\]</a>\n?', body)
 if email_btn:
     body = body.replace(email_btn.group(0), "")
-marker = '<p style="margin: 0; font-size: 0.95rem; color: #6E5F55">Serving'
-if marker not in body:
-    sys.exit("Couldn't find the service-area line in the booking section.")
-body = body.replace(marker, form + "\n" + marker, 1)
+design_form = re.search(r'<div id="consult-card".*?</form>\s*</div>', body, re.S)
+if design_form:
+    body = body.replace(design_form.group(0), form, 1)
+else:
+    marker = '<p style="margin: 0; font-size: 0.95rem; color: #6E5F55">Serving'
+    if marker not in body:
+        sys.exit("Couldn't find the service-area line in the booking section.")
+    body = body.replace(marker, form + "\n" + marker, 1)
+if body.count('id="consult-form"') != 1:
+    sys.exit("Expected exactly one consult form on the page.")
 body = body.replace(
     '<a href="#" style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; border-radius: 999px; border: 3px solid #1F1719; color: #1F1719; text-decoration: none; font-weight: 700">follow along on instagram</a>',
     '<a href="#" data-instagram style="display: inline-flex; align-items: center; min-height: 56px; padding: 0 30px; border-radius: 999px; border: 3px solid #1F1719; color: #1F1719; text-decoration: none; font-weight: 700">follow along on instagram</a>',
