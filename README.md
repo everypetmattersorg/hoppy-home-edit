@@ -8,7 +8,7 @@ Website for Hoppy Home Edit, Emma's home organizing, selling and thrifting busin
 - `site.css`: form styles, focus rings and other extras the design canvas doesn't carry
 - `consult.js`: sends the "free consult" form to Supabase. Until Supabase is set up, it opens the visitor's email app instead (once `contactEmail` is filled in)
 - `config.js`: Supabase project URL and anon key, Emma's email, and her Instagram link
-- `supabase/consult_requests.sql`: creates the `consult_requests` table (visitors can submit requests but can't read them)
+- `supabase/hoppy_consult_requests.sql`: the `hoppy_consult_requests` table (visitors can submit requests but can't read them)
 - `assets/`: logo, frog, favicon and the link-preview image
 - `vercel.json`: Vercel settings (clean URLs, basic security headers, image caching)
 - `scripts/export-design.py` and `partials/`: rebuild `index.html` from the Claude Design file
@@ -21,14 +21,15 @@ Website for Hoppy Home Edit, Emma's home organizing, selling and thrifting busin
 
 ## Supabase (consult form)
 
-1. Create a Supabase project.
-2. In **SQL Editor**, run `supabase/consult_requests.sql`.
-3. From **Project Settings → API**, copy the project URL and the `anon` public key into `config.js`, then push.
-4. New requests show up in **Table Editor → consult_requests**. Use the `status` column (new, contacted, booked, closed) to keep track.
+Requests are stored in the **confluence-creative-co** Supabase project, in the `hoppy_consult_requests` table. It's already set up and `config.js` already has the project URL and public key.
+
+- See new requests in **Table Editor → hoppy_consult_requests**. Use the `status` column (new, contacted, booked, closed) to keep track.
+- Visitors can only add requests. Nobody can read them without logging in to Supabase.
+- To move Emma to her own Supabase project later: run `supabase/hoppy_consult_requests.sql` there, then swap the URL and key in `config.js`.
 
 ## Still to fill in
 
-Prices, before-and-after photos, Emma's photo, the thrift finds, client quotes, her email and Instagram. Look for `[BRACKETED]` text in `index.html`, and the empty values in `config.js`.
+Prices, before-and-after photos, Emma's photo, the thrift finds, client quotes, her reply time, email and Instagram. Look for `[BRACKETED]` text in `index.html`, and the empty `contactEmail` and `instagramUrl` in `config.js`.
 
 ## Editing the design
 

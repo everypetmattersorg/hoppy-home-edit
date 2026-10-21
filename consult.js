@@ -95,7 +95,7 @@
 
     button.disabled = true;
     say("Sending…");
-    fetch(cfg.supabaseUrl.replace(/\/$/, "") + "/rest/v1/consult_requests", {
+    fetch(cfg.supabaseUrl.replace(/\/$/, "") + "/rest/v1/hoppy_consult_requests", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
